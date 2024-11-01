@@ -16,10 +16,17 @@ def write_topology_file(list_services,
     if example_result_path == "":
         config = reader.read_config_file()
         example_result_path = config["examples-results-path"]
+        
+    if "analyzed_applications" in example_folder_path:
+        folder_name = example_folder_path.split("analyzed_applications/")[1]
+    #if not os.path.exists(os.path.join(example_result_path, folder_name)):
+    #    print(os.path.join(example_result_path, folder_name))
+    #    os.makedirs(os.path.join(example_result_path, folder_name))
+    
     topology_writing_path = os.path.join(example_result_path,
                                          folder_name,
                                          "topology.json")
-
+    
     with open(topology_writing_path, "w") as topology:
         json.dump(list_services, topology)
 
@@ -42,6 +49,10 @@ def write_topology_graph(graph,
     if example_result_path == "":
         config = reader.read_config_file()
         example_result_path = config["examples-results-path"]
+
+    if "analyzed_applications" in example_folder_path:
+        folder_name = example_folder_path.split("analyzed_applications/")[1]
+        
     topology_graph_path = os.path.join(example_result_path,
                                        folder_name,
                                        "topology_graph.dot")
