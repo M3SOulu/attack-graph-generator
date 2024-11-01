@@ -185,7 +185,7 @@ def read_docker_compose_file(example_folder_path):
     """This function is responsible for reading the docker-compose file of the container."""
 
     with open(os.path.join(example_folder_path, "docker-compose.yml"), "r") as compose_file:
-        docker_compose_file = yaml.load(compose_file)
+        docker_compose_file = yaml.safe_load(compose_file)
 
     return docker_compose_file
 
@@ -194,7 +194,7 @@ def read_config_file(old_root_path=""):
 
     with open(os.path.join(old_root_path, "config.yml"), "r") as stream:
         try:
-            config_file = yaml.load(stream)
+            config_file = yaml.safe_load(stream)
         except yaml.YAMLError as exc:
             print(exc)
 
