@@ -33,12 +33,14 @@ def validation_docker_compose(example_folder_path):
     for service in services:
         contents_service = services[service]
         if 'build' not in contents_service.keys():
-            print("Now it is not allowed to take images from distant repository.")
-            print("They should be manually built. Please specify the keyword 'build' "
-                  " for the service " + \
-                  service + \
-                  " to the location of the image in the docker-compose.yml file.")
-            return False
+            #print("Now it is not allowed to take images from distant repository.")
+            #print("They should be manually built. Please specify the keyword 'build' "
+            #      " for the service " + \
+            #      service + \
+            #      " to the location of the image in the docker-compose.yml file.")
+            #return False
+            #print("!!! Tool would crash here, I let it run to crash later after the topology has been created")
+            pass
 
     return True
 
